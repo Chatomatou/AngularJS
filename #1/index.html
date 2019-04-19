@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS</title>
+</head>
+<body ng-app>
+    <h1>AngularJS</h1>
+ 
+    <h2>Calculatrice</h2>
+
+    <input type="text" ng-model="nbr1">
+    <input type="text" ng-model="nbr2">
+
+    <p>Le resultat de l'operation est : {{nbr1 * 1 + nbr2 * 1}}</p>
+
+    <h2>Système de recherche</h2>
+
+    <input type="text" ng-model="query">
+    <div ng-init="users=['Antoine', 'Samuel', 'Biczo', 'David', 'Michel', 'Toto', 'Titi']">
+        <ul>
+            <li ng-repeat="user in users | filter:query">{{user}}</li>
+        </ul>
+    </div>
+
+    <h2>Système de commentaire</h2>
+
+    <select ng-model="sort">
+        <option value="username">Trier par nom</option>
+        <option value="comment">Trier par commentaire</option>
+    </select>
+
+    <input type="text" ng-model="commtent_filter" placeholder="Filter les commentaire">
+
+    <div ng-init="users_comments=[ {username: 'Marc', comment:'Merci beaucoup'}, {username: 'Samuel', comment:'C nul'}, {username: 'David', comment:'Bienjouer!'} ]">
+        <div ng-repeat="user_comment in users_comments | orderBy:sort | filter:{comment:commtent_filter}">
+            <p><strong>{{user_comment.username}}</strong><br>{{user_comment.comment}}</p>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+
+</body>
+</html>
